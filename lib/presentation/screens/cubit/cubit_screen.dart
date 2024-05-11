@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forms_app/presentation/blocs/counter_cubit/counter_cubit.dart';
+import 'package:forms_app/presentation/shares/counter/custom_increased_counter.dart';
 
 class CubitScreen extends StatelessWidget {
   const CubitScreen({super.key});
@@ -61,11 +62,11 @@ class _CounterCubitViewState extends State<_CounterCubitView> {
       floatingActionButton: const Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          _IncreasedCounter(3),
+          _IncreasedAction(counter: 3),
           SizedBox(height: 10),
-          _IncreasedCounter(2),
+          _IncreasedAction(counter: 2),
           SizedBox(height: 10),
-          _IncreasedCounter(1),
+          _IncreasedAction(counter: 1),
           SizedBox(height: 15),
         ],
       ),
@@ -73,17 +74,17 @@ class _CounterCubitViewState extends State<_CounterCubitView> {
   }
 }
 
-class _IncreasedCounter extends StatelessWidget {
+class _IncreasedAction extends StatelessWidget {
   final int counter;
-  const _IncreasedCounter(this.counter);
+  const _IncreasedAction({required this.counter});
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-        heroTag: '$counter',
-        child: Text('+$counter'),
-        onPressed: () {
-          context.read<CounterCubit>().increasedCounter(counter);
-        });
+    return CustomIncreasedCounter(
+      counter: counter,
+      onPressed: () {
+        context.read<CounterCubit>().increasedCounter(counter);
+      },
+    );
   }
 }
