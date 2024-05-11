@@ -4,13 +4,13 @@ abstract class CounterState extends Equatable {
   final int counter;
   final int transactionCounter;
 
-  CounterState({required this.counter, required this.transactionCounter});
+  const CounterState({required this.counter, required this.transactionCounter});
 
   copyWith({int counter, int transactionCounter});
 }
 
 class CounterInitial extends CounterState {
-  CounterInitial({
+  const CounterInitial({
     super.counter = 5,
     super.transactionCounter = 0,
   });
