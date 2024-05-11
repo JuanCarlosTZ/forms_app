@@ -10,4 +10,12 @@ final homeMenuItems = <MenuModel>[
       path: '/${AppParameter.bloc}',
       title: 'Bloc',
       subTitle: 'Gestor de estado bloc'),
+  MenuModel(
+      path: '/${AppParameter.riverpod}',
+      title: 'Riverpod',
+      subTitle: 'Gestor de estado Riverpod'),
+  MenuModel(
+      path: '/${AppParameter.provider}',
+      title: 'Provider',
+      subTitle: 'Gestor de estado Provider'),
 ];
