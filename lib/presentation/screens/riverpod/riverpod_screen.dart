@@ -17,7 +17,7 @@ class RiverpodScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Riverpod Screen: ${transactionCounter}'),
+        title: Text('Riverpod Screen: $transactionCounter'),
         actions: [
           IconButton(
               onPressed: () => reserCounterRiverpod(ref),

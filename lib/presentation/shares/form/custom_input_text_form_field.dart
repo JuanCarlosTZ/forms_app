@@ -10,6 +10,7 @@ class CustomInputTextFormField extends StatelessWidget {
   final Function(String value) onChange;
   final bool isRequired;
   final CustomInputType type;
+  final String? error;
   const CustomInputTextFormField({
     super.key,
     required this.label,
@@ -18,6 +19,7 @@ class CustomInputTextFormField extends StatelessWidget {
     this.isRequired = false,
     this.type = CustomInputType.text,
     required this.fieldKey,
+    this.error,
   });
 
   @override
@@ -29,22 +31,24 @@ class CustomInputTextFormField extends StatelessWidget {
       child: TextFormField(
         key: fieldKey,
         decoration: InputDecoration(
-            border: customBorder,
-            label: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(label),
-                isRequired
-                    ? Icon(
-                        Icons.star,
-                        color: Colors.red.shade800,
-                        size: 10,
-                      )
-                    : const SizedBox()
-              ],
-            ),
-            hintText: hintText,
-            isDense: true),
+          border: customBorder,
+          label: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(label),
+              isRequired
+                  ? Icon(
+                      Icons.star,
+                      color: Colors.red.shade800,
+                      size: 10,
+                    )
+                  : const SizedBox()
+            ],
+          ),
+          hintText: hintText,
+          isDense: true,
+          errorText: error,
+        ),
         validator: (value) {
           if (isRequired && (value == null || value.isEmpty)) {
             return 'Required';
@@ -52,13 +56,13 @@ class CustomInputTextFormField extends StatelessWidget {
           if (!isRequired && (value == null || value.isEmpty)) {
             return null;
           }
-          if (type == CustomInputType.text && value!.length < 2) {
-            return 'Length must be more than 2';
+          if (type == CustomInputType.text && value!.length <= 3) {
+            return 'Length must be more than 3';
           }
           if (type == CustomInputType.email && !validateEmail(value!)) {
             return 'Must be valid email';
           }
-          if (type == CustomInputType.password && value!.length < 6) {
+          if (type == CustomInputType.password && value!.length <= 6) {
             return 'Length must be more than 6';
           }
 

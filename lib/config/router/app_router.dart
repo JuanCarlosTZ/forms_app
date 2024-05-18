@@ -27,6 +27,10 @@ final appRouter = GoRouter(initialLocation: '/', routes: [
     path: '/${AppParameter.traditionalForm}',
     builder: (context, state) => const TraditionalForm(),
   ),
+  GoRoute(
+    path: '/${AppParameter.stateForm}',
+    builder: (context, state) => const StateGestureForm(),
+  ),
 ]);
 
 class AppParameter {
