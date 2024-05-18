@@ -11,7 +11,24 @@ class HomeScreen extends HookConsumerWidget {
     return Scaffold(
       body: ListView(
         children: [
-          ...homeMenuItems.map((menuItem) {
+          //gestores de estados
+          ...homeMenuItems.sublist(0, 4).map((menuItem) {
+            return ListTile(
+              title: Text(menuItem.title),
+              subtitle: Text(menuItem.subTitle),
+              trailing: const Icon(Icons.arrow_forward_ios_outlined),
+              onTap: () => context.push(menuItem.path),
+            );
+          }),
+
+          //divisor
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Divider(),
+          ),
+
+          //gestión de formularios
+          ...homeMenuItems.sublist(4).map((menuItem) {
             return ListTile(
               title: Text(menuItem.title),
               subtitle: Text(menuItem.subTitle),

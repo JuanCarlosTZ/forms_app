@@ -1,6 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:forms_app/presentation/screens/provider/provider_screen.dart';
-import 'package:forms_app/presentation/screens/riverpod/riverpod_screen.dart';
 import 'package:forms_app/presentation/screens/screens.dart';
 import 'package:go_router/go_router.dart';
 
@@ -25,6 +23,10 @@ final appRouter = GoRouter(initialLocation: '/', routes: [
     path: '/${AppParameter.provider}',
     builder: (context, state) => const ProviderScreen(),
   ),
+  GoRoute(
+    path: '/${AppParameter.traditionalForm}',
+    builder: (context, state) => const TraditionalForm(),
+  ),
 ]);
 
 class AppParameter {
@@ -33,4 +35,7 @@ class AppParameter {
   static String bloc = 'bloc';
   static String riverpod = 'riverpod';
   static String provider = 'provider';
+  static String traditionalForm = 'traditional-form';
+  static String stateForm = 'state-form';
+  static String customStateForm = 'custom-state-form';
 }

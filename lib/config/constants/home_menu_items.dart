@@ -18,4 +18,8 @@ final homeMenuItems = <MenuModel>[
       path: '/${AppParameter.provider}',
       title: 'Provider',
       subTitle: 'Gestor de estado Provider'),
+  MenuModel(
+      path: '/${AppParameter.traditionalForm}',
+      title: 'Traditional form',
+      subTitle: 'Diseño tradicional de formulario'),
 ];
