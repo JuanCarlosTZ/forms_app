@@ -7,79 +7,53 @@ part 'form_state.dart';
 class FormCubit extends Cubit<FormState> {
   FormCubit()
       : super(const FormState(
-            user: '', email: '', password: '', formValid: false));
+          user: '',
+          email: '',
+          password: '',
+          formValid: false,
+        ));
 
   void onUserChange(String value) {
-    String? error;
-
-    if (value.isEmpty) {
-      error = 'Required';
-    }
-
-    if (error == null && value.length <= 3) {
-      error = 'Length must be more than 3';
-    }
     final newState = state.copyWith(
       user: value,
-      userError: error,
-      passwordError: state.passwordError,
-      emailError: state.emailError,
+      userError: userFormValidate(value),
     );
 
-    emit(newState);
-    _formValid();
+    _formValid(state: newState);
   }
 
   void onEmailChange(String value) {
-    String? error;
-
-    if (value.isEmpty) {
-      error = 'Required';
-    }
-
-    if (error == null && !validateEmail(value)) {
-      error = 'Must be valid email';
-    }
-
-    emit(state.copyWith(
+    final newState = state.copyWith(
       email: value,
-      emailError: error,
-      userError: state.userError,
-      passwordError: state.passwordError,
-    ));
-    _formValid();
+      emailError: emailFormValidate(value),
+    );
+
+    _formValid(state: newState);
   }
 
   void onPasswordChange(String value) {
-    String? error;
-
-    if (value.isEmpty) {
-      error = 'Required';
-    }
-
-    if (error == null && value.length <= 6) {
-      error = 'Length must be more than 6';
-    }
-
-    emit(state.copyWith(
+    final newState = state.copyWith(
       password: value,
-      passwordError: error,
-      userError: state.userError,
-      emailError: state.emailError,
-    ));
-    _formValid();
+      passwordError: passwordFormValidate(value, isRequired: true),
+    );
+
+    _formValid(state: newState);
   }
 
-  void _formValid() {
-    final isValid = (state.userError == null &&
-            state.emailError == null &&
-            state.passwordError == null) &&
-        (state.password.isNotEmpty);
-    emit(state.copyWith(
+  void _formValid({FormState? state}) {
+    final newState = state ?? this.state;
+
+    print(newState);
+
+    final isValid = (newState.userError == null &&
+            newState.emailError == null &&
+            newState.passwordError == null)
+        //      &&
+        // (newState.password.isNotEmpty)
+        ;
+    final validatedState = newState.copyWith(
       formValid: isValid,
-      userError: state.userError,
-      emailError: state.emailError,
-      passwordError: state.passwordError,
-    ));
+    );
+    emit(validatedState);
   }
 }

@@ -72,13 +72,16 @@ class _FormView extends StatelessWidget {
 
     return Form(
       child: Column(children: [
+        const SizedBox(height: 40),
+        const FlutterLogo(size: 100),
+        const SizedBox(height: 10),
         CustomInputTextFormField(
           fieldKey: null,
           label: 'Usuario',
           onChange: (value) {
             context.read<FormCubit>().onUserChange(value);
           },
-          error: userError,
+          error: userError == '' ? null : userError,
         ),
         CustomInputTextFormField(
           fieldKey: null,
@@ -87,7 +90,7 @@ class _FormView extends StatelessWidget {
           onChange: (value) {
             context.read<FormCubit>().onEmailChange(value);
           },
-          error: emailError,
+          error: emailError == '' ? null : emailError,
         ),
         CustomInputTextFormField(
           fieldKey: null,
@@ -97,7 +100,7 @@ class _FormView extends StatelessWidget {
           onChange: (value) {
             context.read<FormCubit>().onPasswordChange(value);
           },
-          error: passwordError,
+          error: passwordError == '' ? null : passwordError,
         ),
         FilledButton.tonalIcon(
           onPressed: formValid
@@ -106,7 +109,7 @@ class _FormView extends StatelessWidget {
                 }
               : null,
           icon: const Icon(Icons.save),
-          label: const Text('Save'),
+          label: const Text('Guardar usuario'),
         )
       ]),
     );

@@ -29,13 +29,14 @@ class FormState extends Equatable {
     String? passwordError,
   }) {
     return FormState(
-        user: user ?? this.user,
-        email: email ?? this.email,
-        password: password ?? this.password,
-        formValid: formValid ?? this.formValid,
-        userError: userError,
-        emailError: emailError,
-        passwordError: passwordError);
+      user: user ?? this.user,
+      email: email ?? this.email,
+      password: password ?? this.password,
+      formValid: formValid ?? this.formValid,
+      userError: userError ?? this.userError,
+      emailError: emailError ?? this.emailError,
+      passwordError: passwordError ?? this.passwordError,
+    );
   }
 
   @override
@@ -44,8 +45,8 @@ class FormState extends Equatable {
         email,
         password,
         formValid,
-        // userError.toString(),
-        // emailError.toString(),
-        // passwordError.toString(),
+        userError.toString(),
+        emailError.toString(),
+        passwordError.toString(),
       ];
 }

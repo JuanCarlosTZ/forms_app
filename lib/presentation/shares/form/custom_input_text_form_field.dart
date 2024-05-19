@@ -32,19 +32,7 @@ class CustomInputTextFormField extends StatelessWidget {
         key: fieldKey,
         decoration: InputDecoration(
           border: customBorder,
-          label: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(label),
-              isRequired
-                  ? Icon(
-                      Icons.star,
-                      color: Colors.red.shade800,
-                      size: 10,
-                    )
-                  : const SizedBox()
-            ],
-          ),
+          label: _Label(label: label, isRequired: isRequired),
           hintText: hintText,
           isDense: true,
           errorText: error,
@@ -74,6 +62,33 @@ class CustomInputTextFormField extends StatelessWidget {
         },
         obscureText: type == CustomInputType.password,
       ),
+    );
+  }
+}
+
+class _Label extends StatelessWidget {
+  const _Label({
+    required this.label,
+    required this.isRequired,
+  });
+
+  final String label;
+  final bool isRequired;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(label),
+        isRequired
+            ? Icon(
+                Icons.star,
+                color: Colors.red.shade800,
+                size: 10,
+              )
+            : const SizedBox()
+      ],
     );
   }
 }
