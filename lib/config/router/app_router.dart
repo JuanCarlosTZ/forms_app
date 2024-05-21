@@ -31,6 +31,14 @@ final appRouter = GoRouter(initialLocation: '/', routes: [
     path: '/${AppParameter.stateForm}',
     builder: (context, state) => const StateGestureForm(),
   ),
+  GoRoute(
+    path: '/${AppParameter.customStateForm}',
+    builder: (context, state) => const CustomStateGestureForm(),
+  ),
+  GoRoute(
+    path: '/${AppParameter.customStateFormAuto}',
+    builder: (context, state) => const CustomStateGestureFormAuto(),
+  ),
 ]);
 
 class AppParameter {
@@ -42,4 +50,5 @@ class AppParameter {
   static String traditionalForm = 'traditional-form';
   static String stateForm = 'state-form';
   static String customStateForm = 'custom-state-form';
+  static String customStateFormAuto = 'custom-state-form-auto';
 }

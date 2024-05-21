@@ -26,4 +26,12 @@ final homeMenuItems = <MenuModel>[
       path: '/${AppParameter.stateForm}',
       title: 'Formulario y Gestor de Estado',
       subTitle: 'Formulario dinámicos'),
+  MenuModel(
+      path: '/${AppParameter.customStateForm}',
+      title: 'Custom Formulario y Gestor de Estado',
+      subTitle: 'Formulario personalizado'),
+  MenuModel(
+      path: '/${AppParameter.customStateFormAuto}',
+      title: 'Custom Formulario Automático',
+      subTitle: 'Formulario completo personalizado'),
 ];

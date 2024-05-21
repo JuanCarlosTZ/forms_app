@@ -5,3 +5,5 @@ export 'package:forms_app/presentation/screens/provider/provider_screen.dart';
 export 'package:forms_app/presentation/screens/riverpod/riverpod_screen.dart';
 export 'package:forms_app/presentation/screens/form/traditional_form.dart';
 export 'package:forms_app/presentation/screens/form/state_gesture_form.dart';
+export 'package:forms_app/presentation/screens/form/custom_state_gesture_form.dart';
+export 'package:forms_app/presentation/screens/form/custom_state_gesture_form_auto.dart';

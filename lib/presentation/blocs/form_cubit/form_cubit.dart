@@ -43,14 +43,9 @@ class FormCubit extends Cubit<FormState> {
   void _formValid({FormState? state}) {
     final newState = state ?? this.state;
 
-    print(newState);
-
-    final isValid = (newState.userError == null &&
-            newState.emailError == null &&
-            newState.passwordError == null)
-        //      &&
-        // (newState.password.isNotEmpty)
-        ;
+    final isValid = (newState.userError == '' &&
+        newState.emailError == '' &&
+        newState.passwordError == '');
     final validatedState = newState.copyWith(
       formValid: isValid,
     );
